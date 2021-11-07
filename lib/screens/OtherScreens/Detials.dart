@@ -8,14 +8,10 @@ import 'package:movie_app/screens/Nav_Bar_Screens/HomePage.dart';
 import 'package:movie_app/widgets/custem_Text.dart';
 import 'package:provider/provider.dart';
 
-class Details extends StatefulWidget {
+class Details extends StatelessWidget {
   var list;
   Details(this.list);
-  @override
-  _DetailsState createState() => _DetailsState();
-}
 
-class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -60,31 +56,14 @@ class _DetailsState extends State<Details> {
                   Stack(
                     children: [
                       Container(
-                        height: 450,
+                        height: 350,
                         width: double.infinity,
                         child: CachedNetworkImage(
                           fit: BoxFit.cover,
-                          imageUrl: "$BaseImage_Url${widget.list.backdrop_path}",
+                          imageUrl: "$BaseImage_Url${list.backdrop_path}",
                           errorWidget: (context, url, error) => Icon(Icons.error),
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 220.0),
-                          child: Container(
-                            height: 90,
-                            width: 90,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle, color: primaryColor),
-                            child: Icon(
-                              Icons.play_circle_outline,
-                              size: 80,
-                              color: greyColor,
-                            ),
-                          ),
-                        ),
-                      )
                     ],
                   ),
                   Align(
@@ -92,16 +71,17 @@ class _DetailsState extends State<Details> {
                     child: Padding(
                       padding:
                           const EdgeInsets.only(top: 15.0, left: 15, right: 15),
-                      child: Text("${widget.list.title}",
+                      child: Text("${list.title}",
                           style: TextStyle(
                             fontSize: 23,
+                            color: Colors.white
                           )),
                     ),
                   ),
                   const   SizedBox(height: 15,),
 
                         CustemText(
-                          text: "🌟 ${widget.list.vote_average}",
+                          text: "🌟 ${list.vote_average}",
                           fontSize: 25,
                           color: Colors.white,
                         ),
@@ -118,13 +98,13 @@ class _DetailsState extends State<Details> {
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
                             )),
-                        Text("${widget.list.release_date}",
+                        Text("${list.release_date}",
                             style: TextStyle(
                               color: accentColor,
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
                             )),
-                        Text("Language :${widget.list.original_language}".tr,
+                        Text("Language :${list.original_language}".tr,
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -160,7 +140,7 @@ class _DetailsState extends State<Details> {
                        alignment: Alignment.topLeft,
                        child: Directionality(
                          textDirection: TextDirection.ltr,
-                         child: Text("${widget.list.overview}",
+                         child: Text("${list.overview}",
                                   style: TextStyle(
                                     color: Colors.white,
                                      fontSize: 15,
@@ -199,17 +179,17 @@ class _DetailsState extends State<Details> {
                             ),
                             onPressed: () {
                               Results movie = Results(
-                                title: widget.list.title,
-                                id: widget.list.id,
-                                 backdrop_path: widget.list.backdrop_path,
-                                original_language: widget.list.original_language,
-                                overview: widget.list.overview,
-                                popularity: widget.list.popularity,
-                                poster_path: widget.list.poster_path,
-                                release_date: widget.list.release_date,
-                                vote_count: widget.list.vote_count,
-                                original_title: widget.list.original_title,
-                                vote_average: widget.list.vote_average,
+                                title: list.title,
+                                id: list.id,
+                                 backdrop_path:list.backdrop_path,
+                                original_language: list.original_language,
+                                overview: list.overview,
+                                popularity: list.popularity,
+                                poster_path: list.poster_path,
+                                release_date: list.release_date,
+                                vote_count: list.vote_count,
+                                original_title: list.original_title,
+                                vote_average: list.vote_average,
                               );
                               Provider.of<Movies_Providers>(context,
                                       listen: false)

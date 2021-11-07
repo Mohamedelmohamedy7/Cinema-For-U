@@ -58,6 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<AuthProvider>(context, listen: false);
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -275,9 +276,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               "assets/images/download.png"),
                                           onPressed: () {
                                             try {
-                                              Provider.of<AuthProvider>(context,
-                                                      listen: false)
-                                                  .faceBookSignInMethod()
+                                              provider.faceBookSignInMethod()
                                                   .then((value) {
                                                 Navigator.of(context)
                                                     .pushReplacement(MaterialPageRoute(builder:(context) => HomePage(), ));
@@ -306,8 +305,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               "assets/images/download (1).png"),
                                           onPressed: () {
                                             try {
-                                              Provider.of<AuthProvider>(context,
-                                                      listen: false)
+                                              provider
                                                   .googleSignInMethod()
                                                   .then((value) {
                                                 Navigator.of(context)

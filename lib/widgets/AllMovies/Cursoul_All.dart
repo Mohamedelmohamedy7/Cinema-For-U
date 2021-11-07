@@ -13,31 +13,18 @@ import 'package:provider/provider.dart';
 import '../../screens/OtherScreens/Constants.dart';
 import '../custem_Text.dart';
 
-class CursoulTv extends StatefulWidget {
-  @override
-  _CursoulPoplurState createState() => _CursoulPoplurState();
-}
-
-class _CursoulPoplurState extends State<CursoulTv> {
-  var popularResponse;
+class CursoulTv extends StatelessWidget{
   Results? movie;
-  @override
-  void initState() {
-    Provider.of<Api_services>(context, listen: false)
-        .fetchPopular()
-        .then((value) {
-      setState(() {
-        popularResponse = value;
-      });
-    });
-    super.initState();
-  }
-
+  var popularResponse;
   @override
   Widget build(BuildContext context) {
+    Provider.of<Api_services>(context)
+        .fetchPopular()
+        .then((value) {
+      popularResponse = value;
+    });
     return PopularResponseMethod();
   }
-
   Widget PopularResponseMethod() {
 
       if (popularResponse is PopularSuccessResponse) {

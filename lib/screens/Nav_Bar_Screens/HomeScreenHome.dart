@@ -8,14 +8,7 @@ import 'package:movie_app/widgets/custem_Text.dart';
 
 import '../OtherScreens/Constants.dart';
 
-class HomeScreenHome extends StatefulWidget {
-  const HomeScreenHome({Key? key}) : super(key: key);
-
-  @override
-  _HomeScreenHomeState createState() => _HomeScreenHomeState();
-}
-
-class _HomeScreenHomeState extends State<HomeScreenHome> {
+class HomeScreenHome extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return  Container(

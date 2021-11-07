@@ -11,45 +11,30 @@ import 'package:movie_app/screens/Nav_Bar_Screens/HomePage.dart';
 import 'package:movie_app/widgets/custem_Text.dart';
 import 'package:provider/provider.dart';
 
-class SeeAllPopular extends StatefulWidget {
-  const SeeAllPopular({Key? key}) : super(key: key);
-
-  @override
-  _SeeAllPopularState createState() => _SeeAllPopularState();
-}
-
-class _SeeAllPopularState extends State<SeeAllPopular> {
+class SeeAllPopular extends StatelessWidget{
   var popularResponse;
-
-  @override
-  void initState() {
-    Provider.of<Api_services>(context, listen: false)
-        .fetchPopular()
-        .then((value) {
-      setState(() {
-        popularResponse = value;
-      });
-    });
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
+    Provider.of<Api_services>(context)
+        .fetchPopular()
+        .then((value) {
+      popularResponse = value;
+    });
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
           backgroundColor: Colors.black,
           appBar: AppBar(
-            backgroundColor: primaryColor,
+            backgroundColor: accentColor,
             leading: IconButton(
               onPressed: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => HomePage())),
-              icon: Icon(Icons.arrow_back_ios),
-              color: accentColor,
+              icon: Icon(Icons.arrow_back_ios,size: 20,),
+              color: primaryColor,
             ),
             title: Text(
               "PopularMovies".tr,
-              style: TextStyle(color: accentColor),
+              style: TextStyle(color: primaryColor,letterSpacing: 1.5),
             ),
           ),
           body: Container(

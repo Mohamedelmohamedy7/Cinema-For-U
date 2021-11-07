@@ -4,14 +4,7 @@ import 'package:movie_app/screens/OtherScreens/Constants.dart';
 import 'package:movie_app/widgets/Popular/See_All_Popular.dart';
 import 'package:movie_app/widgets/custem_Text.dart';
 
-class PopularAndSee extends StatefulWidget {
-  const PopularAndSee({Key? key}) : super(key: key);
-
-  @override
-  _PopularAndSeeState createState() => _PopularAndSeeState();
-}
-
-class _PopularAndSeeState extends State<PopularAndSee> {
+class PopularAndSee extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Row(

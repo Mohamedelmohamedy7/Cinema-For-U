@@ -12,42 +12,34 @@ import 'package:provider/provider.dart';
 
 import '../custem_Text.dart';
 
-class SeaAllMovies extends StatefulWidget {
-
-  @override
-  _SeaAllMoiesState createState() => _SeaAllMoiesState();
-}
-
-class _SeaAllMoiesState extends State<SeaAllMovies> {
+class SeaAllMovies extends StatelessWidget{
   var popularResponse;
   @override
-  void initState() {
-    Provider.of<Api_services>(context, listen: false)
+  Widget build(BuildContext context) {
+    Provider.of<Api_services>(context)
         .fetchPopular()
         .then((value) {
-      setState(() {
-        popularResponse = value;
-      });
+      popularResponse = value;
     });
-    super.initState();
-  }
-  @override
-  Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
           backgroundColor: Colors.black,
           appBar: AppBar(
-            backgroundColor: primaryColor,
-            leading: IconButton(
-              onPressed: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => HomePage())),
-              icon: Icon(Icons.arrow_back_ios),
-              color: accentColor,
+            backgroundColor: accentColor,
+            leading: Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: IconButton(
+                onPressed: () => Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => HomePage())),
+                icon: Icon(Icons.arrow_back_ios),
+                color: primaryColor,
+              ),
             ),
             title: Text(
               "AllMovies".tr,
-              style: TextStyle(color: accentColor),
+              style: TextStyle(color: primaryColor,letterSpacing: 2,
+              ),
             ),
           ),
           body: Container(

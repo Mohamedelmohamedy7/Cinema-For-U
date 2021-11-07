@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:movie_app/screens/OtherScreens/Constants.dart';
-import 'package:movie_app/widgets/custem_Text.dart';
+ import 'package:movie_app/widgets/custem_Text.dart';
 
 import 'AllMoviesSeeAll.dart';
 
-class Tv_Movies extends StatefulWidget {
-
-  @override
-  _PopularAndSeeState createState() => _PopularAndSeeState();
-}
-
-class _PopularAndSeeState extends State<Tv_Movies> {
+class Tv_Movies extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return  Row(

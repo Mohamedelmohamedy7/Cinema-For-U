@@ -12,34 +12,18 @@ import 'package:provider/provider.dart';
 
 import '../../screens/OtherScreens/Constants.dart';
 
-class CursoulPopolur extends StatefulWidget {
-  @override
-  _CursoulPoplurState createState() => _CursoulPoplurState();
-}
-
-class _CursoulPoplurState extends State<CursoulPopolur> {
+class CursoulPopolur extends StatelessWidget{
+  Results? movie;
   var popularResponse;
-
-  @override
-  void initState() {
-    Provider.of<Api_services>(context, listen: false)
-        .fetchPopular()
-        .then((value) {
-      if (this.mounted) {
-        setState(() {
-          popularResponse = value;
-        });
-      }
-    });
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
+    Provider.of<Api_services>(context)
+        .fetchPopular()
+        .then((value) {
+      popularResponse = value;
+    });
     return PopularResponseMethod();
   }
-
-  Results? movie;
 
   Widget PopularResponseMethod() {
     if (popularResponse is PopularSuccessResponse) {
