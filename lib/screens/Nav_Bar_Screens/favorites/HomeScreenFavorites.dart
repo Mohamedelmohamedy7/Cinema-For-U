@@ -294,14 +294,18 @@ class HomeScreenFavorites extends StatelessWidget{
   }
 
   void viewList(context) {
-    Provider.of<Movies_Providers>(context).viewData().then((value){
-      _movie=value;
-    });
+    try {
+      Provider.of<Movies_Providers>(context).viewData().then((value) {
+        _movie = value;
+      });
+    }catch(e){}
   }
 
   void deleteAll(Results Movie,context) {
+    try{
     Provider.of<Movies_Providers>(context,listen: false).delete(Movie);
     viewList(context);
+  }catch(e){}
   }
 
   _refreshHome(context) async {

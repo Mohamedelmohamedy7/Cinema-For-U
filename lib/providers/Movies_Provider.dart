@@ -7,19 +7,10 @@ import 'package:sqflite/sqflite.dart';
 import '../screens/OtherScreens/Constants.dart';
 
 class Movies_Providers extends ChangeNotifier{
-  static Movies_Providers? _helper;
 
-  Movies_Providers._instance();
-
-  factory Movies_Providers() {
-    if (_helper == null) _helper = Movies_Providers._instance();
-
-    return _helper!;
-  }
   Future<String> getDbPath() async {
     var dbPath = await getDatabasesPath();
     var favoriteDbPath = dbPath + "/" + Constants.DB_NAME;
-    // print(favoriteDbPath);
     notifyListeners();
     return favoriteDbPath;
   }

@@ -14,9 +14,7 @@ class AppLangouage extends GetxController{
   await localStorage.getLangSelected!:"en" ;
   Get.updateLocale(Locale(appLocal));
   update();
-  }catch(e){
-      print(e.toString());
-    }}
+  }catch(e){}}
   void changeLang(String type)async{
     LocalStorage localStorage=LocalStorage();
     if(appLocal==type){

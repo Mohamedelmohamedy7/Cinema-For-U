@@ -78,12 +78,13 @@ class Details extends StatelessWidget {
                           )),
                     ),
                   ),
-                  const   SizedBox(height: 15,),
-
-                        CustemText(
-                          text: "🌟 ${list.vote_average}",
-                          fontSize: 25,
-                          color: Colors.white,
+                         Padding(
+                          padding: const EdgeInsets.only(top: 15.0,right: 15),
+                          child: CustemText(
+                            text: "🌟 ${list.vote_average}",
+                            fontSize: 30,
+                            color: Colors.white,
+                          ),
                         ),
                   SizedBox(height: 15,),
 

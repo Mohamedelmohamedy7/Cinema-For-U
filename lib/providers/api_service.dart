@@ -9,16 +9,7 @@ import 'package:movie_app/screens/OtherScreens/base_Exception.dart';
 import 'package:movie_app/models/PopularResponse/popularResponse.dart';
 
 class Api_services extends ChangeNotifier {
-  static Api_services? _apiServices;
 
-  Api_services._instance();
-
-  factory Api_services() {
-    if (_apiServices == null) {
-      _apiServices = Api_services._instance();
-    }
-    return _apiServices!;
-  }
 
   Future<PopularResponse> fetchPopular() async {
     String url =
